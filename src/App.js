@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function App() {
   const [todos, setTodos] = useState([]);
   const [completedTodos, setCompletedTodos] = useState([]);
@@ -43,11 +43,26 @@ function App() {
         placeholder="Add a new task"
         className="input"
       />
-      <button onClick={handleAddTodo} className="button">Add</button>
+      <button onClick={handleAddTodo} className="button button-add">Add</button>
       <div>
-        <button onClick={() => setFilter('all')} className="button">All</button>
-        <button onClick={() => setFilter('active')} className="button">Active</button>
-        <button onClick={() => setFilter('completed')} className="button">Completed</button>
+      <button
+          onClick={() => setFilter('all')}
+          className={`button button-all ${filter === 'all' ? 'button-highlight' : ''}`}
+        >
+          All
+        </button>
+        <button
+          onClick={() => setFilter('active')}
+          className={`button button-active ${filter === 'active' ? 'button-highlight' : ''}`}
+        >
+          Active
+        </button>
+        <button
+          onClick={() => setFilter('completed')}
+          className={`button button-complete ${filter === 'completed' ? 'button-highlight' : ''}`}
+        >
+          Completed
+        </button>
       </div>
       <ul>
         {filteredTodos.map((todo) => (
@@ -55,10 +70,10 @@ function App() {
             <span className={`todo-text ${completedTodos.includes(todo.id) ? 'completed' : ''}`}>
               {todo.text}
             </span>
-            <button onClick={() => handleToggleComplete(todo.id)} className="button">
+            <button onClick={() => handleToggleComplete(todo.id)} className="button button-complete">
               {completedTodos.includes(todo.id) ? 'Undo' : 'Complete'}
             </button>
-            <button onClick={() => handleRemoveTodo(todo.id)} className="button">Remove</button>
+            <button onClick={() => handleRemoveTodo(todo.id)} className="button button-delete"><i></i></button>
           </li>
         ))}
       </ul>
