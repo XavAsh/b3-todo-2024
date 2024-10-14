@@ -46,7 +46,7 @@ function App() {
       />
       <button onClick={handleAddTodo} className="button button-add">Add</button>
       <div classname="filters">
-        <button
+       <button
           onClick={() => setFilter('all')}
           className={`button button-all ${filter === 'all' ? 'button-highlight' : ''}`}
         >
