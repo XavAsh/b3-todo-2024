@@ -1,4 +1,4 @@
-/* App.css */
+
 body, html {
   height: 100%;
   margin: 0;
@@ -10,7 +10,7 @@ body, html {
 
 .container {
   padding: 20px;
-  border: 1px solid #ccc; /* Optional: for visual reference */
+  border: 1px solid #ccc; 
   min-height: 300px;
   height: auto;
   width: 600px;
