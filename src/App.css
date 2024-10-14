@@ -11,7 +11,8 @@ body, html {
 .container {
   padding: 20px;
   border: 1px solid #ccc; /* Optional: for visual reference */
-  height: 300px;
+  min-height: 300px;
+  height: auto;
   width: 600px;
   background-color: lightblue;
   border-radius: 15px;
