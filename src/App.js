@@ -139,6 +139,9 @@ function App() {
           </li>
         ))}
       </ul>
+      <footer className="footer">
+        MyDigitalSchool
+      </footer>
     </div>
   );
 }
