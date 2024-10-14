@@ -91,6 +91,12 @@ function App() {
         >
           Completed
         </button>
+        <button
+          onClick={() => alert("Surprise !!")}
+          className={`button button-active`}
+        >
+          ????
+        </button>
         <input
           type="date"
           value={filterDate}

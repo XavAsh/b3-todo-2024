@@ -10,7 +10,7 @@ body, html {
 
 .container {
   padding: 20px;
-  border: 1px solid #ccc; /* Optional: for visual reference */
+  border: 1px double tomato; /* Optional: for visual reference */
   min-height: 300px;
   height: auto;
   width: 600px;
