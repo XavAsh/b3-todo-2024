@@ -142,7 +142,7 @@ function App() {
       <footer className="footer">
         MyDigitalSchool
       </footer>
-    </div>
+    </div> 
   );
 }
 

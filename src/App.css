@@ -72,3 +72,9 @@ body, html {
 .completed {
   text-decoration: line-through;
 }
+.footer {
+  margin-top: 10vh;
+  font-size: 12px;
+  color: #000000;
+  text-align: center;
+}
