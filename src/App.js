@@ -11,6 +11,7 @@ function App() {
   const [editTodoId, setEditTodoId] = useState(null);
   const [editTodoText, setEditTodoText] = useState('');
   const [filterDate, setFilterDate] = useState('');
+  const [orderBy, setOrderBy] = useState('asc');
 
   const handleAddTodo = () => {
     if (newTodo.trim() && newTodoDate) {
@@ -44,6 +45,10 @@ function App() {
     setEditTodoText('');
   };
 
+  const handleToggleOrderBy = () => {
+    setOrderBy(orderBy === 'asc' ? 'desc' : 'asc');
+  };
+
   const filteredTodos = todos.filter(todo => {
     if (filter === 'all') return true;
     if (filter === 'active') return !completedTodos.includes(todo.id);
@@ -52,6 +57,12 @@ function App() {
   }).filter(todo => {
     if (!filterDate) return true;
     return todo.date === filterDate;
+  }).sort((a, b) => {
+    if (orderBy === 'asc') {
+      return new Date(a.date) - new Date(b.date);
+    } else {
+      return new Date(b.date) - new Date(a.date);
+    }
   });
 
   return (
@@ -97,6 +108,9 @@ function App() {
           onChange={(e) => setFilterDate(e.target.value)}
           className="input"
         />
+        <button onClick={handleToggleOrderBy} className="button button-order">
+          <i className={`fas fa-sort-${orderBy === 'asc' ? 'up' : 'down'}`}></i>
+        </button>
       </div>
       <ul>
         {filteredTodos.map((todo) => (
