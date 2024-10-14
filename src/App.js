@@ -91,18 +91,18 @@ function App() {
         >
           Completed
         </button>
-        <button
-          onClick={() => alert("Surprise !!")}
-          className={`button button-active`}
-        >
-          ????
-        </button>
         <input
           type="date"
           value={filterDate}
           onChange={(e) => setFilterDate(e.target.value)}
           className="input"
         />
+        <button
+          onClick={() => alert("Surprise !!")}
+          className={`button button-active`}
+        >
+          ????
+        </button>
       </div>
       <ul>
         {filteredTodos.map((todo) => (
