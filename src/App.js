@@ -7,13 +7,16 @@ function App() {
   const [completedTodos, setCompletedTodos] = useState([]);
   const [filter, setFilter] = useState('all');
   const [newTodo, setNewTodo] = useState('');
+  const [newTodoDate, setNewTodoDate] = useState('');
   const [editTodoId, setEditTodoId] = useState(null);
   const [editTodoText, setEditTodoText] = useState('');
+  const [filterDate, setFilterDate] = useState('');
 
   const handleAddTodo = () => {
-    if (newTodo.trim()) {
-      setTodos([...todos, { id: Date.now(), text: newTodo }]);
+    if (newTodo.trim() && newTodoDate) {
+      setTodos([...todos, { id: Date.now(), text: newTodo, date: newTodoDate }]);
       setNewTodo('');
+      setNewTodoDate('');
     }
   };
 
@@ -46,18 +49,29 @@ function App() {
     if (filter === 'active') return !completedTodos.includes(todo.id);
     if (filter === 'completed') return completedTodos.includes(todo.id);
     return true;
+  }).filter(todo => {
+    if (!filterDate) return true;
+    return todo.date === filterDate;
   });
 
   return (
     <div className="container">
-      <input
-        type="text"
-        value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
-        placeholder="Add a new task"
-        className="input"
-      />
-      <button onClick={handleAddTodo} className="button button-add">Add</button>
+      <div className="input-bar">
+        <input
+          type="text"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+          placeholder="Add a new task"
+          className="input"
+        />
+        <input
+          type="date"
+          value={newTodoDate}
+          onChange={(e) => setNewTodoDate(e.target.value)}
+          className="input"
+        />
+        <button onClick={handleAddTodo} className="button button-add">Add</button>
+      </div>
       <div className="filters">
         <button
           onClick={() => setFilter('all')}
@@ -77,6 +91,12 @@ function App() {
         >
           Completed
         </button>
+        <input
+          type="date"
+          value={filterDate}
+          onChange={(e) => setFilterDate(e.target.value)}
+          className="input"
+        />
       </div>
       <ul>
         {filteredTodos.map((todo) => (
@@ -90,7 +110,7 @@ function App() {
               />
             ) : (
               <span className={`todo-text ${completedTodos.includes(todo.id) ? 'completed' : ''}`}>
-                {todo.text}
+                {todo.text} - {todo.date}
               </span>
             )}
             {editTodoId === todo.id ? (
