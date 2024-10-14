@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 function App() {
   const [todos, setTodos] = useState([]);
   const [completedTodos, setCompletedTodos] = useState([]);
@@ -44,8 +45,8 @@ function App() {
         className="input"
       />
       <button onClick={handleAddTodo} className="button button-add">Add</button>
-      <div>
-      <button
+      <div classname="filters">
+        <button
           onClick={() => setFilter('all')}
           className={`button button-all ${filter === 'all' ? 'button-highlight' : ''}`}
         >
@@ -73,7 +74,7 @@ function App() {
             <button onClick={() => handleToggleComplete(todo.id)} className="button button-complete">
               {completedTodos.includes(todo.id) ? 'Undo' : 'Complete'}
             </button>
-            <button onClick={() => handleRemoveTodo(todo.id)} className="button button-delete"><i></i></button>
+            <button onClick={() => handleRemoveTodo(todo.id)} className="button button-delete"><i className="fas fa-trash"></i> Delete</button>
           </li>
         ))}
       </ul>
