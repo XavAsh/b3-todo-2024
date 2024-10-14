@@ -7,6 +7,8 @@ function App() {
   const [completedTodos, setCompletedTodos] = useState([]);
   const [filter, setFilter] = useState('all');
   const [newTodo, setNewTodo] = useState('');
+  const [editTodoId, setEditTodoId] = useState(null);
+  const [editTodoText, setEditTodoText] = useState('');
 
   const handleAddTodo = () => {
     if (newTodo.trim()) {
@@ -28,6 +30,17 @@ function App() {
     setCompletedTodos(completedTodos.filter(todoId => todoId !== id));
   };
 
+  const handleEditTodo = (id, text) => {
+    setEditTodoId(id);
+    setEditTodoText(text);
+  };
+
+  const handleConfirmEdit = (id) => {
+    setTodos(todos.map(todo => (todo.id === id ? { ...todo, text: editTodoText } : todo)));
+    setEditTodoId(null);
+    setEditTodoText('');
+  };
+
   const filteredTodos = todos.filter(todo => {
     if (filter === 'all') return true;
     if (filter === 'active') return !completedTodos.includes(todo.id);
@@ -45,8 +58,8 @@ function App() {
         className="input"
       />
       <button onClick={handleAddTodo} className="button button-add">Add</button>
-      <div classname="filters">
-       <button
+      <div className="filters">
+        <button
           onClick={() => setFilter('all')}
           className={`button button-all ${filter === 'all' ? 'button-highlight' : ''}`}
         >
@@ -68,9 +81,23 @@ function App() {
       <ul>
         {filteredTodos.map((todo) => (
           <li key={todo.id} className="todo-item">
-            <span className={`todo-text ${completedTodos.includes(todo.id) ? 'completed' : ''}`}>
-              {todo.text}
-            </span>
+            {editTodoId === todo.id ? (
+              <input
+                type="text"
+                value={editTodoText}
+                onChange={(e) => setEditTodoText(e.target.value)}
+                className="input"
+              />
+            ) : (
+              <span className={`todo-text ${completedTodos.includes(todo.id) ? 'completed' : ''}`}>
+                {todo.text}
+              </span>
+            )}
+            {editTodoId === todo.id ? (
+              <button onClick={() => handleConfirmEdit(todo.id)} className="button button-add">Save</button>
+            ) : (
+              <button onClick={() => handleEditTodo(todo.id, todo.text)} className="button button-edit">Edit</button>
+            )}
             <button onClick={() => handleToggleComplete(todo.id)} className="button button-complete">
               {completedTodos.includes(todo.id) ? 'Undo' : 'Complete'}
             </button>
