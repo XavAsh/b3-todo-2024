@@ -1,80 +1,134 @@
-
-body, html {
+html, body {
   height: 100%;
   margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
   display: flex;
-  align-items: center;
   justify-content: center;
-  background-color: beige;
+  align-items: center;
+  background: linear-gradient(135deg, #333, #111);
+  color: white;
 }
 
 .container {
-  padding: 20px;
-  border: 1px solid #ccc; 
-  min-height: 300px;
-  height: auto;
-  width: 600px;
-  background-color: lightblue;
-  border-radius: 15px;
-  border-color: blue;
+  width: 100%;
+  max-width: 1200px;
+  height: 90vh;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.input-bar {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .input {
-  margin-bottom: 10px;
+  width: 25%;
+  padding: 15px;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
 }
 
 .button {
-  padding: 10px 15px;
-  margin: 5px;
-  border: none;
+  padding: 15px 25px;
+  font-size: 1.2rem;
+  border-radius: 30px;
   cursor: pointer;
-  border-radius: 5px;
-}
-.button-all {
-  background-color: #f0f0f0;
-  color: #000;
+  background: linear-gradient(135deg, #6a5acd, #483d8b);
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.button-active {
-  background-color: #007bff;
-  color: #fff;
+.button:hover {
+  background: linear-gradient(135deg, #836fff, #6a5acd);
+  transform: scale(1.05);
 }
 
-.button-complete {
-  background-color: #28a745;
-  color: #fff;
-}
-
-.button-add {
-  background-color: #17a2b8;
-  color: #fff;
-}
-
-.button-delete {
-  background-color: #dc3545;
-  color: #fff;
-}
 .button-highlight {
-  border: 2px solid #000;
+  background: linear-gradient(135deg, #ff7f50, #ff6347);
+  color: white;
+  border: 2px solid #fff;
+  transform: scale(1.1);
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  align-items: center;
+}
+
+.filters button, .filters input {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+}
+
+.filters input {
+  width: 20%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+ul {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
 .todo-item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: 5px;
+  padding: 20px;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.todo-item:hover {
+  transform: translateX(10px);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .todo-text {
-  flex-grow: 1;
+  width: 60%;
+  overflow-wrap: break-word;
+  line-height: 1.5;
 }
 
 .completed {
+  opacity: 0.6;
   text-decoration: line-through;
 }
+
+button {
+  background: linear-gradient(135deg, #ff7f50, #ff6347);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
 .footer {
-  margin-top: 10vh;
-  font-size: 12px;
-  color: #000000;
   text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 1.3rem;
+  letter-spacing: 1.5px;
+}
+
+.button-delete:hover {
+  background: linear-gradient(135deg, #ff4500, #dc143c);
+  transform: scale(1.1);
 }
