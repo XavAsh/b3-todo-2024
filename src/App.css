@@ -1,7 +1,8 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 body {
@@ -70,7 +71,8 @@ body {
   align-items: center;
 }
 
-.filters button, .filters input {
+.filters button,
+.filters input {
   padding: 10px 20px;
   font-size: 1.2rem;
 }
@@ -91,6 +93,7 @@ ul {
   justify-content: space-between;
   padding: 20px;
   margin-bottom: 15px;
+  gap: 20px;
   font-size: 1.5rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
@@ -131,4 +134,12 @@ button {
 .button-delete:hover {
   background: linear-gradient(135deg, #ff4500, #dc143c);
   transform: scale(1.1);
+}
+
+.completed-bg {
+  background-color: hsl(120deg 100% 25.1% / 35%);
+}
+
+.uncompleted-bg {
+  background-color: #4e4e4e;
 }
